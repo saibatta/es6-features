@@ -14,10 +14,9 @@ Core fatures in ES6(ECMAScript2015)
 	
 # Call, Apply and Bind
 
-<b>this</b> keyword behaves differently in JavaScript than in other object-oriented languages. 
-The call, bind and apply methods can be used to set the <b>this</b> keyword independent of how a function is called.
-The <b>bind</b> method creates a copy of the function and sets the <b>this</b> keyword,
-while the <b>call</b> and <b>apply</b> methods sets the <b>this</b> keyword and calls the function <b>immediately</b>.
+- <b>this</b> keyword behaves differently in JavaScript than in other object-oriented languages. 
+- The call, bind and apply methods can be used to set the <b>this</b> keyword independent of how a function is called.
+- The <b>bind</b> method creates a copy of the function and sets the <b>this</b> keyword,while the <b>call</b> and <b>apply</b> methods sets the <b>this</b> keyword and calls the function <b>immediately</b>.
 
 <b>bind : </b>
 ```sh
@@ -72,4 +71,20 @@ const jane = {
 greet.apply(john, ['Hi', 'en']);
 // Hi, I am Jane and I am 22 years old
 greet.apply(jane, ['Hola', 'es']);
+```
+
+## closure 
+- A closure is a function having access to the parent scope, even after the parent function has closed.
+- A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function.
+```sh
+var add = (function () {
+  var counter = 0;
+  return function () {counter += 1; return counter}
+})();
+
+add();
+add();
+add();
+
+// the counter is now 3
 ```
