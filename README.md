@@ -88,3 +88,27 @@ add();
 
 // the counter is now 3
 ```
+
+### Promise
+A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+
+**A Promise is in one of these states:**
+
+1. **pending**: initial state, neither fulfilled nor rejected.
+2. **fulfilled**: meaning that the operation was completed successfully.
+3. **rejected**: meaning that the operation failed.
+
+```javascript
+const promise = New Promise((resolve,reject)=>{
+ setTimeout(()=>{
+  resolve("Succeffully return New Promose Object after 100ms ");
+},100)
+});
+```
+
+```javascript
+promise.all([pr1,pr2,pr3]); // if any one is rejected it throws the errors return a single Promise Object
+promise.race([pr1,pr2,pr3]); // if any one Rejected or Resolved
+promise.allSetted([pr1,pr2,pr3]);  // it will wait untill all of them get resloved/rejected
+promise.any([p1,p2,p3]) // any one is get resolved
+```
