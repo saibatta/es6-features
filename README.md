@@ -88,6 +88,43 @@ add();
 
 // the counter is now 3
 ```
+```javascript
+console.clear();
+function add(a){
+  return function(b){
+      return a+b;
+    }
+}
+ console.log(add(2)(36)); // 38
+
+function forLoop(){
+  for(let i=0;i<3;i++){
+    setTimeout(()=>{
+      console.log(i);
+      },i*1000)
+  }
+};
+console.log(forLoop()); // 0,1,2 with timeout of 1000 ms
+
+function forLoop(){
+  for(var i=0;i<3;i++){
+    setTimeout(()=>{
+      console.log(i);
+      },i*1000)
+  }
+};
+console.log(forLoop()); // 4,4,4 with timeout of 1000 ms
+
+function forLoop(){
+  for(var i=0;i<3;i++){
+    // setTimeout(()=>{
+      console.log(i);
+   //    },i*1000)
+  }
+};
+console.log(forLoop()); // 0,1,2 with timeout of 1000 ms
+```
+
 
 ### Promise
 A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
