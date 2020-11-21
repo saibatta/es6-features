@@ -112,3 +112,77 @@ promise.race([pr1,pr2,pr3]); // if any one Rejected or Resolved
 promise.allSetted([pr1,pr2,pr3]);  // it will wait untill all of them get resloved/rejected
 promise.any([p1,p2,p3]) // any one is get resolved
 ```
+### Rxjs Subject
+RxJS provides an implementation of the Observable type, which is needed until the type becomes part of the language and until browsers support it. The library also provides utility functions for creating and working with observables. These utility functions can be used for:
+
+Converting existing code for async operations into observables
+- Iterating through the values in a stream
+- Mapping values to different types
+- Filtering streams
+- Composing multiple streams
+
+```javascript
+import { BehaviorSubject, Subject, ReplaySubject,AsyncSubject } from "rxjs";
+
+const behaviourSubject = new BehaviorSubject(123);
+const subject = new Subject();
+const replaySubject = new ReplaySubject();
+const asyncSubject = new AsyncSubject();
+console.log('***************** Subject *********************')
+/**
+ *  Subject no need of intial value
+ * ony current value will return for the all the subscribers
+ *  output 456,789
+ *  */  
+subject.subscribe(console.log);
+subject.next(456); 
+subject.next(789);
+subject.subscribe(console.log); // No value for this subsciber
+subject.subscribe(console.log); // No value for this subscriber
+
+console.log('*************** BehaviorSubject *****************')
+/**
+ * Bahaviour Subject need intial value
+ * otherwise the subscriber will get undefined
+ * Next subscriber will get the current value i.e 789
+ *  output 123,456,789,789,789 
+ * Requires an initial value and emits the current value to new subscribers
+ *  */  
+
+behaviourSubject.subscribe(console.log);
+behaviourSubject.next(456); 
+behaviourSubject.next(789);
+behaviourSubject.subscribe(console.log);// here next subscriber get the current value i.e 789
+behaviourSubject.subscribe(console.log); // here next subscriber get the current value i.e 789
+console.log('************* ReplaySubject *********************')
+/**
+ * Replay Subject emits old values to New subscribers
+ * Relay subject takes intput for the number previous values to emit
+ * if input 0 or 1 current value will be return
+ * output 456,789,789,222,222,222
+ * 
+ * * if input empty current value will be return
+ * output  will as shown below
+ *  */  
+
+replaySubject.subscribe(console.log);
+replaySubject.next(456); // 456
+replaySubject.next(789); // 789
+replaySubject.subscribe(console.log);// 456,789
+replaySubject.next(222); // 222,222
+replaySubject.subscribe(console.log); // 456,789,222
+
+console.log('************* AsynchSubject *********************')
+/**
+ * Asynch Subject emits only latest value to all subscribers
+ * only after it's complete
+ *  */  
+
+asyncSubject.subscribe(console.log); //222
+asyncSubject.next(456); 
+asyncSubject.next(789); 
+asyncSubject.subscribe(console.log);// 222
+asyncSubject.next(222); 
+asyncSubject.subscribe(console.log); // 222
+asyncSubject.complete();
+```
