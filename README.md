@@ -186,3 +186,18 @@ asyncSubject.next(222);
 asyncSubject.subscribe(console.log); // 222
 asyncSubject.complete();
 ```
+
+####  RxJS Operators
+
+##### forkJoin
+This operator is best used when you have a group of observables and only care about the final emitted value of each. **One common use case for this is if you wish to issue multiple requests on page load (or some other event) and only want to take action when a response has been received for all**. In this way it is similar to how you might use **Promise.all.**
+
+------------
+ ##### combineAll
+**combineAll** takes an Observable of Observables, and collects all Observables from it. Once the outer Observable completes, it subscribes to all collected Observables and combines their values using the combineLatest strategy, such that:
+-  Every time an inner Observable emits, the output Observable emits
+-  When the returned observable emits, it emits all of the latest values
+
+------------
+ ##### combineLatest
+ When any observable emits a value, emit the last emitted value from each.**combineLatest** will not emit an initial value until each observable emits at least one value. This is the same behavior as withLatestFrom and can be a gotcha as there will be no output and no error but one (or more) of your inner observables is likely not functioning as intended, or a subscription is late.
