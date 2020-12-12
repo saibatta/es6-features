@@ -238,3 +238,32 @@ This operator is best used when you have a group of observables and only care ab
 ------------
  ##### combineLatest
  When any observable emits a value, emit the last emitted value from each.**combineLatest** will not emit an initial value until each observable emits at least one value. This is the same behavior as withLatestFrom and can be a gotcha as there will be no output and no error but one (or more) of your inner observables is likely not functioning as intended, or a subscription is late.
+
+####  **Spiral of n-dimentional matrix**
+
+
+    const mat =  [[1,2,3,4,5],
+           		      [6,7,8,9,10],
+           			  [11,12,13,14,15],
+           			  [16,17,18,19,20]];
+					  
+    const spiral =(matr)=>{
+       if(matr.length && matr[0].length) {
+     	   matr[0].forEach(item=>{
+       	   console.log(item);
+        });
+        matr.shift();
+        matr.forEach(item=>{
+        	  console.log(item.pop());
+        });
+        spiral(revserse(matr));
+      }
+    }
+      const revserse =(matr)=>{
+      	   matr.forEach(item=>{
+        		  item.reverse();
+        });
+        matr.reverse();
+        return matr;
+      }
+    console.log(spiral(mat));
