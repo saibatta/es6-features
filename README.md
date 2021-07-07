@@ -268,3 +268,92 @@ This operator is best used when you have a group of observables and only care ab
       }
     console.log(spiral(mat));
     output:	1 2 3 4 5 10 15 20 19 18 17 16 11 6 7 8 9 14 13 12
+    
+> ***ECMAScript 6(2015)***
+> 
+##### **1. UNICODE STANDARD VERSION 8 SUPPORT**
+it will allows the use of the unicode characters as variable
+
+	    let unicode_1 ='\u{102C0}';
+	    console.log(unicode_1);
+	                
+	    var unicode_2 = '\uD83D\uDC04';
+	    console.log(unicode_2)
+	    
+	    Output: -   "𐋀"
+			    -   "🐄"
+##### **2.**  **BINARY, HEX AND OCTAL NUMBER SUPPORT**
+-   hex — base 16 — starts with  `0x`
+-   Oct — base 8 — starts with  `0o`
+-   Binary — base 2 — starts with  `0b`
+
+```java
+	var decimalLit = 15;
+	var hexadecimalLit = 0xF;
+	var octalLit = 0o17;
+	var binaryLit = 0b1111;
+	console.log(decimalLit,hexadecimalLit,octalLit,binaryLit); // 15 15 15 15
+	console.log(decimalLit == hexadecimalLit); // true
+	console.log(decimalLit == octalLit); // true
+	console.log(decimalLit == binaryLit); //true
+```
+##### **3.**  **STRING TEMPLATE (BACKTICK Strings)**
+
+concatenating string using  `+`, can now be done using`` ` ``
+
+##### OLDER VERSION:
+
+```java
+	let user ={firstName:'fname',lastName:'lName'};
+	var message = "The user "+ user.firstName + "" + user.lastName ;
+```
+
+##### NEWER VERSION:
+
+```java
+	let user ={firstName:'fname',lastName:'lName'};
+	var message = `The user ${user.firstName} ${user.lastName}`;
+```
+##### **4. DESTRUCTURING ASSIGNMENT**
+
+It breaks an array into its elements, keeping the original array unchanges. This process assignes the variables with items in the corresponding positions.
+
+```java
+	let names = ["Ted", "Jenni", "Athen"];
+	let [ted, jenni, athen] = names;
+	console.log(ted, jenni, athen); //  "Ted Jenni Athen"
+```
+```java
+	let numbers= ["One", "" ,"Three", "Four"];
+	let [One, Two, Three] = numbers;
+	console.log(One, Two, Three); //  "One", "" ,"Three",
+```
+		
+##### **5.DESTRUCTURING IN OBJECTS**
+
+```java
+	let url = "https://jsbin.com/?js,console";
+	let parsedURL = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm.exec(url);
+	let [ fullhost,protocol] = parsedURL;
+	console.log(parsedURL); // ["https://jsbin.com", "jsbin.com"]
+    console.log(fullhost);  // "https://jsbin.com"
+    console.log(protocol);  // "jsbin.com"
+```
+
+```java
+	let point = { x:2, y: 5 };
+	let {x, y} = point;
+	console.log(x, y); // prints 2, 5
+```
+
+```java
+	let point = { x:2, y: 5 };
+	let {y, x} = point;
+	console.log(x, y); // prints 2, 5
+```
+
+```java
+	let point = { x:2, y: 5 };
+	let {y: pty, x: ptx} = point;
+	console.log(ptx, pty); // prints 2, 5
+```
