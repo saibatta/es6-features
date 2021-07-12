@@ -357,3 +357,87 @@ It breaks an array into its elements, keeping the original array unchanges. This
 	let {y: pty, x: ptx} = point;
 	console.log(ptx, pty); // prints 2, 5
 ```
+##### **6.DESTRUCTURING OBJECT PRAMETERS IN A METHOD CALL**
+
+```java
+let person = {
+    firstName: "Ted",
+    lastName: "Neward",
+    age: 45,
+    favoriteLanguages: ["ECMAScript", "Java", "C#", "Scala", "F#"]
+}
+```
+
+```java
+function displayDetails({firstName, age}) {
+    console.log(`${firstName} is ${age} years old`); // "Ted is 45 years old"
+}
+```
+
+```java
+displayDetails(person);
+```
+##### **7.DEFAULT PARAMETER**
+
+Now we can provide the default values of the function variables 
+```java
+let sayHello = function(message = "Hello world!") {
+    console.log(message);
+}
+```
+
+```java
+sayHello(); // "Hello world!"
+```
+
+```java
+sayHello("Howdy!"); // "Howdy!"
+```
+##### **8.SPREAD PARAMETERS: OPPOSITE TO REST PARAMETERS**
+
+This destructurs an array into individual parts and simplest use case is to concatanate arrays.
+
+```java
+let arr1 = [0, 1, 2];
+let arr2 = [...arr1, 3, 4, 5];
+console.log(arr2); // 0,1,2,3,4,5
+```
+
+```java
+//IMPORTANT USECASE:
+function printPerson(first, last, age) {
+    console.log(first, last, age); // "Ted" "Neward" 45
+}
+```
+
+```java
+let args = ["Ted", "Neward", 45];
+```
+
+```java
+printPerson(...args);
+```
+##### **9.KEYS AND VALUES OF ARRAY**
+
+Get values(for of) and keys(for in) from the array by Iterating 
+
+```java
+let arr1 = ['Zero', 'One', 'Two'];
+const arrayInerate = (arr1) =>{
+ for(value of arr1){
+   console.log(value ) // 'Zero', 'One', 'Two'
+ }
+}
+arrayInerate(arr1);
+
+```
+```java
+let arr1 = ['Zero', 'One', 'Two'];
+const arrayInerate = (arr1) =>{
+ for(key of arr1){
+   console.log(key ) // 0,1,2
+   console.log(arr1[key] ) // 'Zero', 'One', 'Two'
+ }
+}
+arrayInerate(arr1);
+```
