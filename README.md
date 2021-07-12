@@ -441,3 +441,92 @@ const arrayInerate = (arr1) =>{
 }
 arrayInerate(arr1);
 ```
+##### 10. **IF `this` IS REFERENCED FROM THE GLOBAL SCOPE THEN IT REFERS TO THE GLOBAL VARIABLES, FUNCTIONS, AND OBJECTS.**
+
+`this` Refers to the parent  global object
+
+
+```java
+let displayThis = function() {
+    for (let m in this) {
+        console.log(m); // global object values
+    }
+};
+displayThis(); // this == global object
+```
+`this` Refers to the object of the function which is called
+```java
+let displayThis = function() {
+    for (let m in this) {
+        console.log(m); // "firstName"  "lastName" "displayMe"
+    }
+};
+let bob = {
+    firstName: "Bob",
+    lastName: "Robertson",
+    displayMe: displayThis
+};
+bob.displayMe(); // this == bob
+```
+
+##### **11. IN NODE JS `require(‘events’)` IS A PUB-SUB MODULE- EVENT LISTENERS**
+
+```java
+// let EventEmitter = require('events');
+let ee = new EventEmitter(); // Default JS feature no need to import 
+```
+```java
+ee.on('event', function() {
+    console.log("function event fired", this); // Event Subscriber
+});
+```
+```java
+ee.emit('event'); // Event Emitter
+```
+##### **12. GENERATOR FUNCTION: SIMILAR TO STREAMS IN REACTIVE PROGRAMMING**
+
+Infinte stream is implemented using GENERATOR in ES6.
+
+
+```java
+function* getName() {
+   yield "One";
+   yield "Two";
+   yield "Three";
+  yield "Four";
+}
+```
+
+```java
+let names = getName();
+```
+
+```java
+console.log(names.next().value); // "One"
+console.log(names.next().value); // "Two"
+console.log(names.next().value); //"Three"
+console.log(names.next().value); //"Four"
+console.log(names.next().value); // undefined
+```
+
+The function will print each name in order. When it runs out of names it will print  `undefined`.
+
+##### **13. CONSTRUCTOR OF A CLASS**
+
+```java
+class Person{
+    constructor(firstName, lastName, age){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.fullName = this.firstName +' '+ this.lastName;
+    }
+}
+```
+
+```java
+let ted = new Person("Ted", "Neward", 45);
+console.log(ted.firstName); // "Ted"
+console.log(ted.age); // 45
+console.log(ted.fullName); // "Ted Neward"
+```
